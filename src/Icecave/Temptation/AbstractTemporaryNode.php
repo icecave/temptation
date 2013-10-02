@@ -7,7 +7,7 @@ use Symfony\Component\Filesystem\Filesystem;
 abstract class AbstractTemporaryNode
 {
     /**
-     * @param string $path The path to the temporary file or directory.
+     * @param string     $path       The path to the temporary file or directory.
      * @param Filesystem $fileSystem The filesystem object used to manipulate the file system.
      */
     public function __construct($path, Filesystem $fileSystem)
@@ -34,15 +34,15 @@ abstract class AbstractTemporaryNode
     /**
      * Fetch the path of the temporary file or directory.
      *
-     * @return string The path of the temporary file or directory.
-     * @throws Exception\ObjectReleasedException if the object has been released previously.
+     * @return string                                   The path of the temporary file or directory.
+     * @throws Exception\TemporaryNodeReleasedException if the object has been released previously.
      */
     public function path()
     {
         $this->typeCheck->path(func_get_args());
 
         if ($this->isReleased()) {
-            throw new Exception\ObjectReleasedException;
+            throw new Exception\TemporaryNodeReleasedException;
         }
 
         return $this->path;
@@ -50,10 +50,15 @@ abstract class AbstractTemporaryNode
 
     /**
      * Release and delete the temporary file/directory immediately.
+     * @throws Exception\TemporaryNodeReleasedException if the object has been released previously.
      */
     public function delete()
     {
         $this->typeCheck->delete(func_get_args());
+
+        if ($this->isReleased()) {
+            throw new Exception\TemporaryNodeReleasedException;
+        }
 
         $this->fileSystem->remove($this->path);
         $this->release();

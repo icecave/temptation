@@ -12,7 +12,7 @@ class Temptation
 {
     /**
      * @param Filesystem|null $fileSystem The filesystem object used to manipulate the file system.
-     * @param Isolator|null $isolator
+     * @param Isolator|null   $isolator
      */
     public function __construct(Filesystem $fileSystem = null, Isolator $isolator = null)
     {
