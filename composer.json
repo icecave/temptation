@@ -1,6 +1,6 @@
 {
     "name": "icecave/temptation",
-    "description": "Painless temporary files and directories that cleanup after themselves.",
+    "description": "Painless temporary files and directories that clean up after themselves.",
     "keywords": ["tmp", "temp", "folder", "dir", "directory", "file"],
     "homepage": "https://github.com/IcecaveStudios/temptation",
     "license": "MIT",
