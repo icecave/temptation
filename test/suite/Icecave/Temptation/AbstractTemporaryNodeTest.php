@@ -52,6 +52,12 @@ class AbstractTemporaryNodeTest extends PHPUnit_Framework_TestCase
         }
     }
 
+    public function testRelease()
+    {
+        $this->assertSame($this->path, $this->node->release());
+        $this->assertTrue($this->node->isReleased());
+    }
+
     public function testIsReleased()
     {
         $this->assertFalse($this->node->isReleased());
