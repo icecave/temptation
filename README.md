@@ -12,7 +12,6 @@
 ## Example
 
 ```php
-<?php
 use Icecave\Temptation\Temptation;
 
 // Use the temptation object to create files and directories ...
