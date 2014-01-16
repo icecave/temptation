@@ -1,7 +1,6 @@
 <?php
 namespace Icecave\Temptation;
 
-use Icecave\Temptation\TypeCheck\TypeCheck;
 use Symfony\Component\Filesystem\Filesystem;
 
 abstract class AbstractTemporaryNode
@@ -12,8 +11,6 @@ abstract class AbstractTemporaryNode
      */
     public function __construct($path, Filesystem $fileSystem)
     {
-        $this->typeCheck = TypeCheck::get(__CLASS__, func_get_args());
-
         $this->path = $path;
         $this->fileSystem = $fileSystem;
     }
@@ -39,8 +36,6 @@ abstract class AbstractTemporaryNode
      */
     public function path()
     {
-        $this->typeCheck->path(func_get_args());
-
         if ($this->isReleased()) {
             throw new Exception\TemporaryNodeReleasedException;
         }
@@ -54,8 +49,6 @@ abstract class AbstractTemporaryNode
      */
     public function delete()
     {
-        $this->typeCheck->delete(func_get_args());
-
         if ($this->isReleased()) {
             throw new Exception\TemporaryNodeReleasedException;
         }
@@ -73,8 +66,6 @@ abstract class AbstractTemporaryNode
      */
     public function release()
     {
-        $this->typeCheck->release(func_get_args());
-
         $this->fileSystem = null;
 
         return $this->path;
@@ -87,8 +78,6 @@ abstract class AbstractTemporaryNode
      */
     public function isReleased()
     {
-        $this->typeCheck->isReleased(func_get_args());
-
         return null === $this->fileSystem;
     }
 
@@ -99,12 +88,9 @@ abstract class AbstractTemporaryNode
      */
     public function fileSystem()
     {
-        $this->typeCheck->fileSystem(func_get_args());
-
         return $this->fileSystem;
     }
 
-    private $typeCheck;
     private $path;
     private $fileSystem;
 }

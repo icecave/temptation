@@ -2,7 +2,6 @@
 namespace Icecave\Temptation;
 
 use Icecave\Isolator\Isolator;
-use Icecave\Temptation\TypeCheck\TypeCheck;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
@@ -16,8 +15,6 @@ class Temptation
      */
     public function __construct(Filesystem $fileSystem = null, Isolator $isolator = null)
     {
-        $this->typeCheck = TypeCheck::get(__CLASS__, func_get_args());
-
         if (null === $fileSystem) {
             $fileSystem = new Filesystem;
         }
@@ -37,8 +34,6 @@ class Temptation
      */
     public function createDirectory($mode = 0700)
     {
-        $this->typeCheck->createDirectory(func_get_args());
-
         $path = $this->generatePath();
         $this->isolator->unlink($path);
         $this->isolator->mkdir($path, $mode);
@@ -57,8 +52,6 @@ class Temptation
      */
     public function createFile($mode = 0600)
     {
-        $this->typeCheck->createFile(func_get_args());
-
         $path = $this->generatePath();
         $this->isolator->chmod($path, $mode);
 
@@ -72,8 +65,6 @@ class Temptation
      */
     public function fileSystem()
     {
-        $this->typeCheck->fileSystem(func_get_args());
-
         return $this->fileSystem;
     }
 
@@ -84,8 +75,6 @@ class Temptation
      */
     protected function generatePath()
     {
-        $this->typeCheck->generatePath(func_get_args());
-
         $path = $this->isolator->tempnam(
             $this->isolator->sys_get_temp_dir(),
             'temptation-'
@@ -94,7 +83,6 @@ class Temptation
         return $path;
     }
 
-    private $typeCheck;
     private $fileSystem;
     private $isolator;
 }
