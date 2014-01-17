@@ -2,6 +2,7 @@
 namespace Icecave\Temptation;
 
 use Icecave\Isolator\Isolator;
+use Icecave\Temptation\Exception\TemporaryNodeCreationFailedException;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
@@ -34,11 +35,18 @@ class Temptation
      */
     public function createDirectory($mode = 0700)
     {
-        $path = $this->generatePath();
-        $this->isolator->unlink($path);
-        $this->isolator->mkdir($path, $mode);
+        $attempts = 3;
 
-        return new TemporaryDirectory($path, $this->fileSystem);
+        while ($attempts--) {
+            $path = $this->generatePath();
+            $this->isolator->unlink($path);
+
+            if (@$this->isolator->mkdir($path, $mode)) {
+                return new TemporaryDirectory($path, $this->fileSystem);
+            }
+        }
+
+        throw new TemporaryNodeCreationFailedException('Unable to create temporary directory.');
     }
 
     /**
