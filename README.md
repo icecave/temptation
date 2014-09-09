@@ -4,7 +4,7 @@
 [![Test Coverage]](https://coveralls.io/r/IcecaveStudios/temptation?branch=develop)
 [![SemVer]](http://semver.org)
 
-**Temptation** is a simple PHP library for creating temporary files and directories that cleanup after themselves.
+**Temptation** is a simple PHP library for creating temporary files and directories that clean up after themselves.
 
 * Install via [Composer](http://getcomposer.org) package [icecave/temptation](https://packagist.org/packages/icecave/temptation)
 * Read the [API documentation](http://icecavestudios.github.io/temptation/artifacts/documentation/api/)
@@ -12,7 +12,6 @@
 ## Example
 
 ```php
-<?php
 use Icecave\Temptation\Temptation;
 
 // Use the temptation object to create files and directories ...
@@ -29,6 +28,6 @@ file_put_contents($file->path(), 'This is my temp file.');
 ```
 
 <!-- references -->
-[Build Status]: https://travis-ci.org/IcecaveStudios/temptation.png?branch=develop
-[Test Coverage]: https://coveralls.io/repos/IcecaveStudios/temptation/badge.png?branch=develop
-[SemVer]: http://calm-shore-6115.herokuapp.com/?label=semver&value=0.1.0&color=yellow
+[Build Status]: http://img.shields.io/travis/IcecaveStudios/temptation/develop.svg
+[Test Coverage]: http://img.shields.io/coveralls/IcecaveStudios/temptation/develop.svg
+[SemVer]: http://img.shields.io/:semver-1.0.0-green.svg

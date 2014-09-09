@@ -19,7 +19,13 @@ class TemptationTest extends PHPUnit_Framework_TestCase
 
         Phake::when($this->isolator)
             ->tempnam(Phake::anyParameters())
-            ->thenReturn('/tmp/foo');
+            ->thenReturn('/tmp/foo')
+            ->thenReturn('/tmp/bar')
+            ->thenReturn('/tmp/spam');
+
+        Phake::when($this->isolator)
+            ->mkdir(Phake::anyParameters())
+            ->thenReturn(true);
     }
 
     public function testConstructorDefaults()
@@ -43,6 +49,32 @@ class TemptationTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf(__NAMESPACE__ . '\TemporaryDirectory', $result);
         $this->assertSame('/tmp/foo', $result->path());
         $this->assertSame($this->fileSystem, $result->fileSystem());
+    }
+
+    public function testCreateDirectoryFailure()
+    {
+        Phake::when($this->isolator)
+            ->mkdir(Phake::anyParameters())
+            ->thenReturn(false);
+
+        $this->setExpectedException(__NAMESPACE__ . '\Exception\TemporaryNodeCreationFailedException');
+
+        try {
+            $this->temptation->createDirectory();
+        } catch (RuntimeException $e) {
+            Phake::inOrder(
+                Phake::verify($this->isolator)->sys_get_temp_dir(),
+                Phake::verify($this->isolator)->tempnam('/tmp', 'temptation-'),
+                Phake::verify($this->isolator)->unlink('/tmp/foo'),
+                Phake::verify($this->isolator)->mkdir('/tmp/foo', 0700),
+                Phake::verify($this->isolator)->unlink('/tmp/bar'),
+                Phake::verify($this->isolator)->mkdir('/tmp/bar', 0700),
+                Phake::verify($this->isolator)->unlink('/tmp/spam'),
+                Phake::verify($this->isolator)->mkdir('/tmp/spam', 0700)
+            );
+
+            throw $e;
+        }
     }
 
     public function testCreateFile()

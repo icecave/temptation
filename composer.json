@@ -1,7 +1,14 @@
 {
     "name": "icecave/temptation",
-    "description": "Painless temporary files and directories that cleanup after themselves.",
-    "keywords": ["tmp", "temp", "folder", "dir", "directory", "file"],
+    "description": "Painless temporary files and directories that clean up after themselves.",
+    "keywords": [
+        "tmp",
+        "temp",
+        "folder",
+        "dir",
+        "directory",
+        "file"
+    ],
     "homepage": "https://github.com/IcecaveStudios/temptation",
     "license": "MIT",
     "authors": [
@@ -17,20 +24,16 @@
         "icecave/isolator": "~2"
     },
     "require-dev": {
-        "eloquent/typhoon": "~0.9.0",
         "icecave/archer": "~1"
     },
     "autoload": {
-        "psr-0": {
-            "Icecave\\Temptation": "src",
-            "Icecave\\Temptation\\TypeCheck": "src-typhoon"
+        "psr-4": {
+            "Icecave\\Temptation\\": "src"
         }
     },
     "extra": {
-        "typhoon": {
-            "output-path": "src-typhoon",
-            "validator-namespace": "Icecave\\Temptation\\TypeCheck",
-            "use-native-callable": false
+        "branch-alias": {
+            "dev-develop": "1.0.x-dev"
         }
     }
 }
