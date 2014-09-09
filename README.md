@@ -30,4 +30,4 @@ file_put_contents($file->path(), 'This is my temp file.');
 <!-- references -->
 [Build Status]: http://img.shields.io/travis/IcecaveStudios/temptation/develop.svg
 [Test Coverage]: http://img.shields.io/coveralls/IcecaveStudios/temptation/develop.svg
-[SemVer]: http://img.shields.io/:semver-0.1.0-yellow.svg
+[SemVer]: http://img.shields.io/:semver-1.0.0-green.svg
