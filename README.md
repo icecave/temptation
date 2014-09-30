@@ -27,6 +27,11 @@ file_put_contents($file->path(), 'This is my temp file.');
 // The temporary file is automatically deleted when the $file object goes out of scope.
 ```
 
+## Contact us
+
+* Follow [@IcecaveStudios](https://twitter.com/IcecaveStudios) on Twitter
+* Visit the [Icecave Studios website](http://icecave.com.au)
+
 <!-- references -->
 [Build Status]: http://img.shields.io/travis/IcecaveStudios/temptation/develop.svg?style=flat-square
 [Test Coverage]: http://img.shields.io/coveralls/IcecaveStudios/temptation/develop.svg?style=flat-square
