@@ -7,7 +7,7 @@ class TemporaryNodeCreationFailedExceptionTest extends PHPUnit_Framework_TestCas
 {
     public function testException()
     {
-        $exception = new TemporaryNodeCreationFailedException;
+        $exception = new TemporaryNodeCreationFailedException();
 
         $this->assertSame('Failed to create temporary node.', $exception->getMessage());
     }

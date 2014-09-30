@@ -30,7 +30,7 @@ class TemptationTest extends PHPUnit_Framework_TestCase
 
     public function testConstructorDefaults()
     {
-        $temptation = new Temptation;
+        $temptation = new Temptation();
 
         $this->assertInstanceOf('Symfony\Component\Filesystem\Filesystem', $temptation->fileSystem());
     }

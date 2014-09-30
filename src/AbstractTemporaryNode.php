@@ -37,7 +37,7 @@ abstract class AbstractTemporaryNode
     public function path()
     {
         if ($this->isReleased()) {
-            throw new Exception\TemporaryNodeReleasedException;
+            throw new Exception\TemporaryNodeReleasedException();
         }
 
         return $this->path;
@@ -50,7 +50,7 @@ abstract class AbstractTemporaryNode
     public function delete()
     {
         if ($this->isReleased()) {
-            throw new Exception\TemporaryNodeReleasedException;
+            throw new Exception\TemporaryNodeReleasedException();
         }
 
         $this->fileSystem->remove($this->path);
