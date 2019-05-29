@@ -1,9 +1,9 @@
 <?php
 namespace Icecave\Temptation\Exception;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class TemporaryNodeReleasedExceptionTest extends PHPUnit_Framework_TestCase
+class TemporaryNodeReleasedExceptionTest extends TestCase
 {
     public function testException()
     {

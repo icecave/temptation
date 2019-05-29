@@ -3,9 +3,9 @@ namespace Icecave\Temptation;
 
 use Exception;
 use Phake;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class AbstractTemporaryNodeTest extends PHPUnit_Framework_TestCase
+class AbstractTemporaryNodeTest extends TestCase
 {
     public function setUp()
     {
@@ -23,7 +23,7 @@ class AbstractTemporaryNodeTest extends PHPUnit_Framework_TestCase
     {
         $this->node->release();
 
-        $this->setExpectedException(__NAMESPACE__ . '\Exception\TemporaryNodeReleasedException');
+        $this->expectException(__NAMESPACE__ . '\Exception\TemporaryNodeReleasedException');
         $this->node->path();
     }
 
@@ -43,7 +43,7 @@ class AbstractTemporaryNodeTest extends PHPUnit_Framework_TestCase
     {
         $this->node->release();
 
-        $this->setExpectedException(__NAMESPACE__ . '\Exception\TemporaryNodeReleasedException');
+        $this->expectException(__NAMESPACE__ . '\Exception\TemporaryNodeReleasedException');
         try {
             $this->node->delete();
         } catch (Exception $e) {
