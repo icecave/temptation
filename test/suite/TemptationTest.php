@@ -3,9 +3,9 @@ namespace Icecave\Temptation;
 
 use Icecave\Isolator\Isolator;
 use Phake;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class TemptationTest extends PHPUnit_Framework_TestCase
+class TemptationTest extends TestCase
 {
     public function setUp()
     {
@@ -30,7 +30,7 @@ class TemptationTest extends PHPUnit_Framework_TestCase
 
     public function testConstructorDefaults()
     {
-        $temptation = new Temptation;
+        $temptation = new Temptation();
 
         $this->assertInstanceOf('Symfony\Component\Filesystem\Filesystem', $temptation->fileSystem());
     }
@@ -57,7 +57,7 @@ class TemptationTest extends PHPUnit_Framework_TestCase
             ->mkdir(Phake::anyParameters())
             ->thenReturn(false);
 
-        $this->setExpectedException(__NAMESPACE__ . '\Exception\TemporaryNodeCreationFailedException');
+        $this->expectException(__NAMESPACE__ . '\Exception\TemporaryNodeCreationFailedException');
 
         try {
             $this->temptation->createDirectory();

@@ -1,13 +1,13 @@
 <?php
 namespace Icecave\Temptation\Exception;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class TemporaryNodeCreationFailedExceptionTest extends PHPUnit_Framework_TestCase
+class TemporaryNodeCreationFailedExceptionTest extends TestCase
 {
     public function testException()
     {
-        $exception = new TemporaryNodeCreationFailedException;
+        $exception = new TemporaryNodeCreationFailedException();
 
         $this->assertSame('Failed to create temporary node.', $exception->getMessage());
     }

@@ -9,31 +9,29 @@
         "directory",
         "file"
     ],
-    "homepage": "https://github.com/IcecaveStudios/temptation",
+    "homepage": "https://github.com/icecave/temptation",
     "license": "MIT",
     "authors": [
         {
             "name": "James Harris",
-            "email": "james.harris@icecave.com.au",
+            "email": "mailjamesharris@gmail.com",
             "homepage": "https://github.com/jmalloc"
         }
     ],
     "require": {
-        "php": ">=5.3",
-        "symfony/filesystem": "~2",
-        "icecave/isolator": "~2"
+        "php": "^7.1",
+        "symfony/filesystem": "^2",
+        "icecave/isolator": "^2"
     },
     "require-dev": {
-        "icecave/archer": "~1"
+        "phake/phake": "^3",
+        "phpunit/phpunit": "^7"
     },
-    "autoload": {
-        "psr-4": {
-            "Icecave\\Temptation\\": "src"
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-develop": "1.0.x-dev"
+    "autoload": { "psr-4": { "Icecave\\Temptation\\": "src" } },
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "7.1"
         }
     }
 }

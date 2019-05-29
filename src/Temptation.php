@@ -17,7 +17,7 @@ class Temptation
     public function __construct(Filesystem $fileSystem = null, Isolator $isolator = null)
     {
         if (null === $fileSystem) {
-            $fileSystem = new Filesystem;
+            $fileSystem = new Filesystem();
         }
 
         $this->fileSystem = $fileSystem;
